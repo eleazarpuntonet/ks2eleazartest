@@ -7,12 +7,13 @@
           :items="users"
           :items-per-page="10"
           class="elevation-1"
+          @click:row="onRowClick"
         >
           <template v-slot:top>
             <v-toolbar flat>
-              <v-toolbar-title>User Management</v-toolbar-title>
+              <v-toolbar-title>Administración de Usuarios</v-toolbar-title>
               <v-spacer></v-spacer>
-              <v-btn @click="openCreateDialog" color="primary">Create User</v-btn>
+              <v-btn @click="openCreateDialog" color="primary">Agregar Usuario</v-btn>
             </v-toolbar>
           </template>
           <template v-slot:item.actions="{ item }">
@@ -46,7 +47,7 @@ import UserForm from '@/components/UserForm.vue';
 export default defineComponent({
   name: 'UserList',
   components: { UserForm },
-  setup() {
+  setup(props, { emit }) {
     const users = ref<User[]>([]);
     const dialog = ref(false);
     const editMode = ref(false);
@@ -68,6 +69,10 @@ export default defineComponent({
       }
     };
 
+    const onRowClick = (event ,{item}) => {
+      emit('selectUser', item.id);
+    };
+
     const openCreateDialog = () => {
       currentUser.value = {};
       editMode.value = false;
@@ -85,7 +90,7 @@ export default defineComponent({
         await userService.deleteUser(id);
         fetchUsers();
       } catch (error) {
-        console.error('Error deleting user:', error);
+        console.error('Error eliminando usuario:', error);
       }
     };
 
@@ -106,6 +111,7 @@ export default defineComponent({
       deleteUser,
       closeDialog,
       fetchUsers,
+      onRowClick,
     };
   },
 });

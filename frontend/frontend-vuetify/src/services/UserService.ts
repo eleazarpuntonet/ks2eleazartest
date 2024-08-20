@@ -1,6 +1,6 @@
 // src/services/userService.ts
 import axios from 'axios';
-import { UserResponse, User } from '@./interfaces/User';
+import { UserResponse, User } from '@/interfaces/User';
 
 const apiClient = axios.create({
   baseURL: 'http://localhost:3000',
@@ -23,5 +23,8 @@ export default {
   },
   deleteUser(id: number) {
     return apiClient.delete(`/users/${id}`);
+  },
+  getUser(id: number) {
+    return apiClient.get<User>(`/users/${id}`);
   },
 };

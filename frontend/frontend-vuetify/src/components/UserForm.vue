@@ -2,8 +2,8 @@
   <v-dialog v-model="open" max-width="500px">
     <v-card>
       <v-card-title>
-        <span v-if="!editMode">Create User</span>
-        <span v-else>Edit User</span>
+        <span v-if="!editMode">Crear Usuario</span>
+        <span v-else>Editar Usuario</span>
       </v-card-title>
       <v-card-text>
         <v-text-field v-model="localUser.name" label="Name" required></v-text-field>
@@ -11,8 +11,8 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="blue darken-1" text @click="close">Cancel</v-btn>
-        <v-btn color="blue darken-1" text @click="saveUser">Save</v-btn>
+        <v-btn color="blue darken-1" text @click="close">Cancelar</v-btn>
+        <v-btn color="blue darken-1" text @click="saveUser">Guardar</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
