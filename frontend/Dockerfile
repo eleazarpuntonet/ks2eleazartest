@@ -1,19 +1,20 @@
-# frontend/Dockerfile
-
-FROM node:18-alpine
+# Etapa de construcción
+FROM node:18-alpine AS build
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
-
+COPY ./frontend-vuetify/package*.json ./
 RUN npm install
 
-COPY ./frontend/frontend-files .
+COPY . .
 
 RUN npm run build
 
-RUN npm install -g serve
+# # Etapa de producción
+# FROM nginx:alpine
 
-EXPOSE 5000
+# COPY --from=build /usr/src/app/dist /usr/share/nginx/html
 
-CMD ["serve", "-s", "dist"]
+# EXPOSE 80
+
+# CMD ["nginx", "-g", "daemon off;"]

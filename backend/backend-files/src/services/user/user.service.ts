@@ -14,7 +14,7 @@ export class UserService {
     const user = this.userRepository.create({ name, email });
     return this.userRepository.save(user);
   }
-
+  
   async findAll(page: number, limit: number): Promise<{ data: User[]; total: number; page: number; limit: number }> {
     const [result, total] = await this.userRepository.findAndCount({
       take: limit,

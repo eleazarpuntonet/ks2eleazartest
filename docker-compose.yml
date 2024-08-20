@@ -12,26 +12,26 @@ services:
   backend:
     build:
       context: ./backend
-      dockerfile: ${DOCKERFILE:-Dockerfile}
+      dockerfile: Dockerfile
     volumes:
       - ./backend:/usr/src/app
     ports:
       - '3000:3000'
     environment:
-      - NODE_ENV=${NODE_ENV:-development}
+      - NODE_ENV=development
     networks:
       - local-network
 
   frontend:
     build:
       context: ./frontend
-      dockerfile: ${DOCKERFILE:-Dockerfile}
+      dockerfile: Dockerfile
     volumes:
-      - ./frontend:/usr/src/app
+      - ./frontend/frontend-vuetify:/usr/src/app
     ports:
-      - '8080:8080'
+      - '8080:80'
     environment:
-      - NODE_ENV=${NODE_ENV:-development}
+      - NODE_ENV=development
     networks:
       - local-network
 
