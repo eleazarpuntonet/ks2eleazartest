@@ -48,7 +48,7 @@ El proyecto se divide en tres partes principales:
      ```
      npm run dev
      ```
-   - El frontend estará disponible en `http://localhost:5173`.
+   - El frontend estará disponible en `http://localhost:3001/`.
 
 ## Dockerización
 
