@@ -17,11 +17,24 @@
 import { ref, onMounted, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import userService from '@/services/UserService';
-import { User } from '@/interfaces/User';
+import { User } from '@/interfaces/User.interface';
 
 const user = ref<Partial<User>>({});
 const route = useRoute();
 const router = useRouter();
+
+// Fetch user data when the component is mounted
+onMounted(async () => {
+  await fetchUser(Number(route.params.userId));
+});
+
+// Watch for changes in the route params and fetch the user data
+watch(
+  () => route.params.userId,
+  async (newId) => {
+    await fetchUser(Number(newId));
+  }
+);
 
 const fetchUser = async (userId: number) => {
   try {
@@ -32,23 +45,11 @@ const fetchUser = async (userId: number) => {
   }
 };
 
-const formatDate = (date: string) => {
-  return new Date(date).toLocaleString();
+const formatDate = (date: string | undefined) => {
+  return date ? new Date(date).toLocaleString() : 'N/A';
 };
 
 const goBack = () => {
   router.push('/users');
 };
-
-onMounted(() => {
-  fetchUser(Number(route.params.userId));
-});
-
-// Escucha los cambios en los parámetros de la ruta y actualiza el usuario
-watch(
-  () => route.params.userId,
-  (newUserId) => {
-    fetchUser(Number(newUserId));
-  }
-);
 </script>

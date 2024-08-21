@@ -8,7 +8,7 @@ RUN npm install
 
 COPY ./backend-files .
 
-RUN npm run build
+RUN npm run start
 
 # Etapa de producción
 # FROM node:18-alpine

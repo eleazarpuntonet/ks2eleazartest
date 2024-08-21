@@ -40,14 +40,14 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue';
-import userService from '@/services/UserService.ts';
+import userService from '@/services/UserService';
 import { User } from '@/interfaces/User.interface';
 import UserForm from '@/components/UserForm.vue';
 
 export default defineComponent({
   name: 'UserList',
   components: { UserForm },
-  setup(props, { emit }) {
+  setup(_props, { emit }) {
     const users = ref<User[]>([]);
     const dialog = ref(false);
     const editMode = ref(false);
@@ -69,8 +69,8 @@ export default defineComponent({
       }
     };
 
-    const onRowClick = (event ,{item}) => {
-      emit('selectUser', item.id);
+    const onRowClick = (_event: any ,item: any): void => {
+      emit('selectUser', item.item.id);
     };
 
     const openCreateDialog = () => {

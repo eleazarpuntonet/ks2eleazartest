@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 COPY ./frontend-vuetify/package*.json ./
 RUN npm install
 
-COPY . .
+COPY ./frontend-vuetify .
 
 RUN npm run build
 

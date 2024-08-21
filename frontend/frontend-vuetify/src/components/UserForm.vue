@@ -11,8 +11,8 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="blue darken-1" text @click="close">Cancelar</v-btn>
-        <v-btn color="blue darken-1" text @click="saveUser">Guardar</v-btn>
+        <v-btn color="blue darken-1"  @click="close">Cancelar</v-btn>
+        <v-btn color="blue darken-1"  @click="saveUser">Guardar</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -20,8 +20,8 @@
 
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue';
-import { User } from '@/interfaces/User.interface.ts';
-import userService from '@/services/UserService.ts';
+import { User } from '@/interfaces/User.interface';
+import userService from '@/services/UserService';
 
 export default defineComponent({
   name: 'UserForm',

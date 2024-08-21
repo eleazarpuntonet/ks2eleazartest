@@ -1,6 +1,6 @@
 // src/services/userService.ts
 import axios from 'axios';
-import { UserResponse, User } from '@/interfaces/User';
+import { UserResponse, User } from '@/interfaces/User.interface';
 
 const apiClient = axios.create({
   baseURL: 'http://localhost:3000',

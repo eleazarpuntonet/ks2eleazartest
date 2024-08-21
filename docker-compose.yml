@@ -9,32 +9,6 @@ networks:
     external: true
 
 services:
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    volumes:
-      - ./backend:/usr/src/app
-    ports:
-      - '3000:3000'
-    environment:
-      - NODE_ENV=development
-    networks:
-      - local-network
-
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    volumes:
-      - ./frontend/frontend-vuetify:/usr/src/app
-    ports:
-      - '8080:80'
-    environment:
-      - NODE_ENV=development
-    networks:
-      - local-network
-
   postgres:
     image: postgres:13-alpine
     volumes:
